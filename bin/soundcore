@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+  then
+    bluetoothctl connect AC:12:2F:CE:5B:33
+  else
+    bluetoothctl disconnect
+fi

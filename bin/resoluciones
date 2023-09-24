@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+# Define options
+ops=`echo "Solo Lenovo\nSamsung and Lenovo\nSamgung FullHD\nSamsung 4k"|dmenu -i -p "Resolucion Maestro?:"`
+
+# Prompt user to select an option using dmenu
+#echo $options | dmenu -i -p "Select an option:"
+#echo "Solo Lenovo\nSamsung and Lenovo\nSamgung FullHD\nSamsung 4k only" | dmenu
+
+# Handle user's selection
+case $ops in
+  "Solo Lenovo")
+    # Do something for Option 1
+    $HOME/.screenlayout/screen-concepcion52-lenovo-only.sh
+    ;;
+  "Samsung and Lenovo")
+    # Do something for Option 2
+    $HOME/.screenlayout/screen-concepcion52.sh
+    ;;
+  "Samgung FullHD")
+    # Do something for Option 3
+    $HOME/.screenlayout/screen-concepcion52-samsung-only-fullhd.sh
+    ;;
+  "Samsung 4k")
+    # Do something for Option 3
+    $HOME/.screenlayout/screen-concepcion52-samsung-only-4k.sh
+    ;;
+  *)
+    # Handle invalid selection
+    exit 1
+    ;;
+esac

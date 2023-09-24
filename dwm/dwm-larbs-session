@@ -1,0 +1,30 @@
+#Monitor
+#xrandr --output HDMI-0 --mode 1920x1080 -r 144
+
+#sound
+pipewire &
+pipewire-pulse &
+
+#Bar
+#dwmblocks &
+
+#Compositor
+picom --config /home/goviedo/.config/compton/config -b
+
+# Background
+sleep 2 && /home/goviedo/.fehbg &
+
+#White loop
+#while true; do
+	#/usr/local/bin/dwm >/dev/null 2>&1
+#done
+
+#Window Manager
+while :; do
+	exec dbus-run-session ssh-agent /usr/local/bin/dwm 2> /home/goviedo/.dwm.log
+done
+
+# Luke Smith # https://github.com/LukeSmithxyz/voidrice/tree/master/.local/bin    
+# https://github.com/alols/xcape
+/usr/local/bin/remaps
+

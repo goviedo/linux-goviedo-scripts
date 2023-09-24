@@ -1,0 +1,1 @@
+sensors | grep 'Package id' | cut -d' ' -f5

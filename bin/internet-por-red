@@ -1,0 +1,5 @@
+#!/bin/bash
+# Nota, parece que no funciona bien con NetworkManager o el servidor.
+# Notar que docker.socket o docker.service puede traer problemas
+ip addr add 10.0.0.10/24 broadcast 10.0.0.255 dev enp5s0
+ip route add default via 10.0.0.1

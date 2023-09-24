@@ -1,0 +1,11 @@
+# Genera un respaldo de los movimientos financieros mios
+# esto debiera usarse con un crontab
+# con la siguiente estructura: 0 3 * * * $HOME/respaldo-mf
+#!/bin/bash
+cd $HOME/mf
+FECHA=$(date +"%Y-%m-%d_%H-%M-%S")
+ARCHIVO=mf_db_backup_$FECHA.tar.gz
+tar -czf $ARCHIVO *.db
+mv $ARCHIVO $HOME/mf/respaldos
+
+

@@ -1,0 +1,2 @@
+#!/bin/bash
+picom --vsync --backend=xr_glx_hybrid --inactive-opacity-override -i 1 &

@@ -1,0 +1,2 @@
+#!/bin/bash
+groff -ms $1.ms -T html > $1.html

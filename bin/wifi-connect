@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DATE=`date +%d-%m-%Y_+%H:%M:%S`
+SSID="VTR-4215057"
+PWD="x3sPtkfnxmdf"
+DEVICE="wlp2s0"
+
+CONECTAR=`nmcli connection show | grep $DEVICE | cut -d' ' -f15`
+
+if [ -z $CONECTAR ]; then
+
+  nmcli device wifi connect "$SSID" password "$PWD"
+
+  if [ $? -eq 0 ]; then
+    echo $DATE
+    echo "Se ha conectado o reconectado a $SSID"
+  else
+    echo $DATE
+    echo "No me pude conectar a $SSID"
+    exit 1
+  fi
+# else
+#   echo "Ya esta conectado a $SSID"
+#   exit 0
+fi
+

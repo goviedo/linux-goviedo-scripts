@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ ! -z $1 ]; then 
+	S=$(sudo brightnessctl set $1% | grep -i "(" | cut -d"(" -f2 | tr -cd '[[:digit:]]')
+	notify-send "Brillo Maximo es $S"
+else 
+	S=$(sudo brightnessctl set 100%)
+	notify-send "Brillo Maximo es 100%"
+fi
+

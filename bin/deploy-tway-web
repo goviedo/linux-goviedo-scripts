@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $HOME/Proyectos/tway/inds/inds-web
+#yarn build 
+tar -acvf d.tar dist/ && oraclevps-send ./d.tar

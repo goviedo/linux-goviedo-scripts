@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# Define options
+ops=`echo "SoundCoreLife2\nMLAB-BT\n"|dmenu -i -p "Bluetooth Device Maestro?:"`
+
+# Prompt user to select an option using dmenu
+#echo $options | dmenu -i -p "Select an option:"
+#echo "Solo Lenovo\nSamsung and Lenovo\nSamgung FullHD\nSamsung 4k only" | dmenu
+
+# Handle user's selection
+case $ops in
+  "SoundCoreLife2")
+    # Do something for Option 1
+    soundcore-life-dot-2
+    ;;
+  "MLAB-BT")
+    bluetoothctl connect 3A:4A:F1:63:74:94
+    ;;
+  *)
+    # Handle invalid selection
+    exit 1
+    ;;
+esac

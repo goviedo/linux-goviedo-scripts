@@ -1,0 +1,8 @@
+sudo firewall-cmd --zone=external --change-interface=wifi0 --permanent
+sudo firewall-cmd --zone=internal --change-interface=net0 --permanent
+sudo firewall-cmd --permanent --new-policy int2ext
+sudo firewall-cmd --permanent --policy int2ext --add-ingress-zone internal
+sudo firewall-cmd --permanent --policy int2ext --add-egress-zone external
+sudo firewall-cmd --permanent --policy int2ext --set-target ACCEPT
+sudo firewall-cmd --permanent --policy int2ext --add-rich-rule='rule family=ipv4 source address=10.0.0.0/24 accept'
+sudo firewall-cmd --reload

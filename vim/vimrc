@@ -1,0 +1,200 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+Plugin 'kshenoy/vim-signature'
+Plugin 'tpope/vim-fugitive'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-surround'
+" Plugin 'raimondi/delimitmate'
+Plugin 'dracula/vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'mitermayer/vim-prettier'
+Plugin 'sickill/vim-pasta'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'junegunn/vim-slash'
+Plugin 'joereynolds/place.vim'
+"Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vlime/vlime', {'rtp': 'vim/'}
+" Cierra los parentesis y otras cosas
+Plugin 'jiangmiao/auto-pairs'
+" Para closetag html
+Plugin 'alvan/vim-closetag'
+" Linea vertical para identado
+Plugin 'Yggdroot/indentLine'
+" Escape con retardo
+" Plugin 'zhou13/vim-easyescape' " https://github.com/zhou13/vim-easyescape/
+" Linea de estado
+Plugin 'bling/vim-airline'
+" Color scheme
+Plugin  'kyoz/purify', { 'rtp': 'vim' }
+" Remove trailing whitespace :StripWhitespace
+Plugin  'ntpeters/vim-better-whitespace'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" see :h vundle for more details or wiki for FAQ
+
+" ********** CONFIGURACIONES GENERALES ***************
+
+" Copy and Paste Luke Smith
+vnoremap <C-c> "*y :let @+=@*<CR>
+"map <C-v> "+P
+map + "+P
+
+" Tecla Leader como espacio
+let mapleader="\<Space>"
+
+" Tab como espacios y solo 2 espacios
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" Sintax Highlight
+" Seteamos el modo dracula
+packadd! dracula
+syntax on
+syntax enable
+colorscheme dracula
+"colorscheme purify
+" colorscheme ron
+"colorscheme dracula
+" colorscheme jellybeans
+" colorscheme morning
+
+" Numeros relativos
+set nu
+set rnu
+
+" Lineas y lineas relativas
+nnoremap <F2> :set nu<CR> :set rnu<CR>
+nnoremap <F3> :set nonu<CR> :set nornu<CR>
+
+" ----------
+" Establece el syntax highlight
+" ----------
+nmap <c-l> <Esc>:syn sync fromstart<CR>
+
+
+" ----------
+" Autoidentacion en las siguientes palabras
+" ----------
+set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" ----------
+" No active el highlight search
+" ----------
+set nohlsearch
+
+" ************************** 
+" CONFIGURACIONES DE PLUGINS 
+" ***************************
+
+" ----------
+" Vim easy escape Cambia el ESC
+" ----------
+" let g:easyescape_chars = { "j": 1 }
+" let g:easyescape_timeout = 300
+" cnoremap jj <ESC>
+imap jj <ESC>l
+
+
+" ----------
+" Easy Motion
+" ----------
+map <Leader>f <Plug>(easymotion-bd-f)
+map <Leader>l <Plug>(easymotion-bd-jk)
+map <Leader>w <Plug>(easymotion-bd-w)
+"map <Leader> <Plug>(easymotion-prefix)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" ----------
+" PLACE.VIM
+" ----------
+nmap ga <Plug>(place-insert)
+nmap gb <Plug>(place-insert-multiple)
+
+" ----------
+" FZF
+" ----------
+map <F5> :FZF<CR>
+
+" ----------
+" ENTER
+" ----------
+map <CR> o<Esc>
+
+" ----------------------------
+" CtrlP (Buscador de Archivos)
+" ----------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Remap for dvorak
+"noremap d h
+"noremap h j
+"noremap t k
+"noremap n l
+
+" ----------
+" GitGutter
+" ----------
+let g:gitgutter_terminal_reports_focus=0
+
+" ----------------------------------------------
+" CloseTab  http://github.com/alvan/vim-closetag
+" ----------------------------------------------
+let g:closetag_filenames = '*.html,*.js,*.xhtml,*.phtml'
+
+" --------------
+" dwm dwmblocks
+" --------------
+autocmd BufWritePost ~/software/luke-dwm/dwmblocks/config.h !cd ~/software/luke-dwm/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+
+
+" --------------
+" groff html
+" --------------
+"autocmd BufWritePost * execute 'silent ! if [ -f % ] ; then groff -ms % -T html > ./%:r.html ; fi'
+
+" ------------------
+" Autocarga del path
+" ------------------
+"set path+=autoload
+set path+=**
+
+" --------------
+" Mouse a
+" --------------
+set mouse=a
+"set clipboard=unnamedplus
+
+
+
+" *****************
+" Teclas abreviadas
+" *****************
+
+noremap <Leader>ev :e $HOME/.config/vim/vimrc<CR>
+noremap <Leader>ed :e /opt/dwm/config.h<CR>
+noremap <Leader>tmc :!qutebrowser https://cheatography.com/bechtold/cheat-sheets/tmux-the-terminal-multiplexer<CR>
+
+" ********** URL o ANEXOS ***************
+" URL Interesantes
+" Lista de Plugins: https://github.com/mutewinter/dot_vim
+" VimAwesome: https://vimawesome.com/plugin/surround-vim
+
+"
+set wildmenu
+

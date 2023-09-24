@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -i $HOME/.ssh/ssh-key-2022-02-19.key $1 opc@144.22.36.193

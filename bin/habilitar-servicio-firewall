@@ -1,0 +1,3 @@
+firewall-cmd --zone=external --add-service=http
+firewall-cmd --zone=external --add-port=7081/tcp
+firewall-cmd --zone=external --add-port=7081/tcp

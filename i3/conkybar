@@ -1,0 +1,55 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+ 
+# Update interval in seconds
+update_interval 2.0
+ 
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+#total_run_times 0
+ 
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+ 
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address. 
+#if_up route
+ 
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+ 
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+ 
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+ 
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+# JSON for i3bar
+[
+{ "full_text" : " CPU: ${cpu cpu}% " , "color" : "\#3EF8D9" },
+{ "full_text" : " ${exec /usr/local/bin/hay-inet.sh} ","color":"\#21AE28" },
+{ "full_text" : " Root: ${fs_free_perc}% " , "color" : "\#3EF8D9" },
+{ "full_text" : "RAM ${memperc}%" , "color" : ${if_match ${memperc}<90}"\#F8F53E"${else}"\#F88F3E"${endif} },
+{ "full_text" : "" , "color" : "\#4C7899" },
+{ "full_text" : "$processes/$running_processes " , "color" : "\#55326C" },
+{ "full_text" : " BAT: ${battery_time} / ${battery_percent}% " , "color" : ${if_match ${battery_percent}>16}"\#F17D1E"${else}"\#F40D18"${endif} }
+,
+{ "full_text" : "" , "color" : "\#4C7899" }
+,
+{ "full_text" : "${if_existing /proc/net/route eth0} eth0 D:${downspeed eth0} / U ${upspeed eth0} | T-D-U: ${totaldown eth0}/${totalup eth0}${endif}"  , "color" : "\#21AE28" 
+},
+{ "full_text" : "${if_existing /proc/net/route enp0s8} enp0s8--D:${downspeed enp0s8} / U ${upspeed enp0s8} | T-D-U: ${totaldown enp0s8}/${totalup enp0s8}${endif}"  , "color" : "\#21AE28" 
+},
+{ "full_text" : "${if_existing /proc/net/route wlan0} Wifi D:${downspeed wlan0} / U ${upspeed wlan0} | T-D-U: ${totaldown wlan0}/${totalup wlan0}${endif}"  , "color" : "\#21AE28" 
+},
+{ "full_text" : " ${time %d/%m %R} " , "color" : "\#F83EEC" }
+],

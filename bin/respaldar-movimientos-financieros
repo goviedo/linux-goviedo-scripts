@@ -1,0 +1,8 @@
+#!/bin/sh
+scp -i /home/goviedo/Descargas/ssh-key-2022-02-19.key opc@144.22.36.193:/home/opc/mf.mv.db /home/goviedo/goviedo-personal/respaldos/movimientos-financieros/
+scp -i /home/goviedo/Descargas/ssh-key-2022-02-19.key opc@144.22.36.193:/home/opc/mf.trace.db /home/goviedo/goviedo-personal/respaldos/movimientos-financieros/
+cd /home/goviedo/goviedo-personal/
+git add .
+git commit -m "Respaldo movimientos financieros"
+git push
+

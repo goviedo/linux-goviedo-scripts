@@ -1,0 +1,2 @@
+#!/bin/bash
+mongosh mongodb+srv://goviedo:ciglome1@cluster0.3831k.mongodb.net/pmo

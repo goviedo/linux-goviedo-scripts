@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ $1 -eq 0 ]; then
+	brightnessctl --device='asus\:\:kbd_backlight' set 0
+fi
+
+if [ $1 -ge 1 ]; then
+	brightnessctl --device='asus\:\:kbd_backlight' set $1
+fi

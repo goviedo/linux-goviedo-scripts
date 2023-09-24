@@ -1,0 +1,10 @@
+Config { font = "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true" 
+, bgColor = "#000000" 
+, fgColor = "orange" 
+, position = Static { xpos = 0 , ypos = 0, width = 1285, height = 16 } 
+, commands = [
+	Run StdinReader ]
+	, sepChar = "%" 
+	, alignSep = "}{"
+	, template = " %StdinReader%" 
+}

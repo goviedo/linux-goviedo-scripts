@@ -1,0 +1,1 @@
+sensors | grep 'edge' | cut -d' ' -f10

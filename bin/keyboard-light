@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://wiki.archlinux.org/title/keyboard_backlight
+#echo 3 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+brightnessctl --device='asus::kbd_backlight' set 3

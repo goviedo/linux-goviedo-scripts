@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+ifconfig wlp0s20u7 down
+ifconfig wlan0 down
+# Define options
+ops=`echo "VTR 1\nVTR 2\n"|dmenu -i -p "Internet Maestro?:"`
+
+# Prompt user to select an option using dmenu
+#echo $options | dmenu -i -p "Select an option:"
+#echo "Solo Lenovo\nSamsung and Lenovo\nSamgung FullHD\nSamsung 4k only" | dmenu
+
+# Handle user's selection
+case $ops in
+  "VTR 1")
+    # Do something for Option 1
+    nmcli connection up VTR-4215057\ 4
+    ;;
+  "VTR 2")
+    # Do something for Option 2
+    nmcli connection up VTR-4215057\ 2
+    ;;
+  *)
+    # Handle invalid selection
+    exit 1
+    ;;
+esac

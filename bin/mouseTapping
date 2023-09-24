@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ $1 -eq 0 ]
+	then
+		xinput set-prop "ELAN1200:00 04F3:3044 Touchpad" "libinput Tapping Enabled" 0
+	else 
+		xinput set-prop "ELAN1200:00 04F3:3044 Touchpad" "libinput Tapping Enabled" 1
+	fi
+

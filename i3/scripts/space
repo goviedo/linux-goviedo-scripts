@@ -1,0 +1,28 @@
+#!/bin/bash
+if [ -z $1 ];
+then
+  exit 1
+fi
+
+if [ $1 == "sdb5" ];
+then
+  df -h |grep $1 | cut -d' ' -f15
+fi
+
+if [ $1 == "sdb6" ];
+then
+  df -h |grep $1 | cut -d' ' -f13
+fi
+
+if [ $1 == "sdb8" ];
+then
+  df -h |grep $1 | cut -d' ' -f13
+fi
+
+if [ $1 == "root" ];
+then
+  R=`df -h |grep n1p5 | cut -d' ' -f10`
+  H=`df -h |grep sda5| cut -d' ' -f15`
+  U=`df -h |grep sda6| cut -d' ' -f14`
+  echo $R":"$H:$U
+fi

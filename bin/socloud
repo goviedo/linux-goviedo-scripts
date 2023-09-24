@@ -1,0 +1,2 @@
+#!/bin/bash
+sshpass -p 'ciglome1$%&' ssh -p 22222 root@ocloud

@@ -1,0 +1,2 @@
+# http://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/comment-page-1/#comments
+echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a && echo "Ram-cache and Swap Cleared"

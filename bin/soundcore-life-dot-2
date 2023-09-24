@@ -1,0 +1,48 @@
+#!/bin/bash
+ADDR=`bluetoothctl devices | grep "Soundcore Life Dot 2" | cut -d' ' -f2`
+SINK=`pactl list | grep "Soundcore Life Dot 2" -A30 | grep bluez_sink | grep Source | cut -d'.' -f2`
+
+echo "ADDR: "$ADDR
+echo "SINK: "$SINK
+
+sin_sink() {
+	bluetoothctl power off
+	sudo systemctl restart bluetooth.service
+	sleep 3
+	bluetoothctl power on
+	sleep 2
+	bluetoothctl agent on
+	sleep 2
+	bluetoothctl discoverable on
+	sleep 2
+	sleep 2
+	sudo systemctl restart bluetooth.service
+	sleep 2
+	bluetoothctl disconnect $ADDR
+	sleep 2
+	bluetoothctl connect $ADDR
+	sleep 2
+	SINK_TWO=`pactl list | grep "Soundcore Life Dot 2" -A30 | grep bluez_sink | grep Source | cut -d'.' -f2`
+	pactl set-port-latency-offset bluez_card.$SINK_TWO headset-output 65536
+}
+
+con_sink() {
+	SINK_TWO=`pactl list | grep "Soundcore Life Dot 2" -A30 | grep bluez_sink | grep Source | cut -d'.' -f2`
+	pactl set-port-latency-offset bluez_card.$SINK_TWO headset-output 65536
+	sleep 2
+	sudo systemctl restart bluetooth.service
+	sleep 2
+	bluetoothctl disconnect $ADDR
+	sleep 2
+	bluetoothctl connect $ADDR
+}
+
+if [ -z $SINK ]; then
+	echo "SIN SINK"
+	sin_sink
+else
+	echo "CON SINK"
+	con_sink
+fi
+
+

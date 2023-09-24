@@ -1,0 +1,2 @@
+export OPENSSL_CONF=/etc/openssl.cnf 
+yarn $1
